@@ -4,16 +4,27 @@
         <input type="text" id="node-input-aws">
     </div>
     <div class="form-row">
+        <label for="node-input-method">Method</label>
+        <select type="text" name="node-input-method" id="node-input-method" style="width: 70%">
+            <option value="GET" selected="true">GET</option>
+            <option value="POST">POST</option>
+        </select>
+    </div>
+    <div class="form-row">
         <label for="node-input-region">Region</label>
         <input type="text" id="node-input-region">
     </div>
     <div class="form-row">
-        <label for="node-input-serviceName">Service</label>
-        <input type="text" id="node-input-serviceName">
+        <label for="node-input-service">Service</label>
+        <input type="text" id="node-input-service">
     </div>
     <div class="form-row">
-        <label for="node-input-url">Url</label>
-        <input type="text" id="node-input-url">
+        <label for="node-input-host">Host</label>
+        <input type="text" id="node-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-input-path">Path</label>
+        <input type="text" id="node-input-path">
     </div>
 </script>
 
@@ -43,8 +54,10 @@
         defaults: {
             aws: { type: "aws-signature-auth", required: true },
             region: { value: "" },
-            serviceName: { value: "" },
-            url: { value: "" },
+            service: { value: "" },
+            host: { value: "" },
+            path: { value: "" },
+            method: { value: "GET" }
         },
         inputs: 1,
         outputs: 1,
