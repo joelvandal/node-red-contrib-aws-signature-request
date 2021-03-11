@@ -1,0 +1,62 @@
+<script type="text/x-red" data-template-name="aws-signature">
+    <div class="form-row">
+        <label for="node-input-aws"><i class="fa fa-user"></i> AWS keys</label>
+        <input type="text" id="node-input-aws">
+    </div>
+    <div class="form-row">
+        <label for="node-input-region">Region</label>
+        <input type="text" id="node-input-region">
+    </div>
+    <div class="form-row">
+        <label for="node-input-serviceName">Service</label>
+        <input type="text" id="node-input-serviceName">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url">Url</label>
+        <input type="text" id="node-input-url">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="aws-signature">
+    <p>Get pocket list.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>search
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Search keys</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">object</span>
+        </dt>
+        <dd>Default response from API</dd>
+    </dl>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('aws-signature', {
+        category: 'AWS',
+        color: "#EEE",
+        defaults: {
+            aws: { type: "aws-signature-auth", required: true },
+            region: { value: "" },
+            serviceName: { value: "" },
+            url: { value: "" },
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "aws.png",
+        align: "left",
+        label: 'AWS signature',
+        paletteLabel: 'AWS signature',
+        oneditprepare: function () {
+
+        },
+        oneditsave: function () {
+
+        }
+    });
+</script>
