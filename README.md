@@ -1,13 +1,14 @@
-# node-red-contrib-pocket-api
+# node-red-contrib-aws-signature-request
 
-The node using Pocket API.
+This node send request using AWS Signature type.
+Auth data is added to Request Headers.
 
 
 ## Install
 
-npm install node-red-contrib-pocket-api
+npm install node-red-contrib-aws-signature-request
 
 
-## Setup Consumer key
+## Credentials
 
-Follow <a href="https://getpocket.com/developer/docs/authentication" target="_blank">this guide</a> to retrieve your Consumer key
+IAM Access key and Secret access key

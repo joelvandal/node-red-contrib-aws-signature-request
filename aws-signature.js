@@ -21,7 +21,9 @@ module.exports = function (RED) {
         host = msg.host || n.host,
         path = msg.path || n.path,
         method = msg.method || n.method || "GET";
+        
       node.status({ fill: "blue", shape: "ring", text: "Sending" });
+
       let url = host + path;
       let keys = {
         accessKeyId: this.aws.credentials.accessKey,
@@ -34,7 +36,7 @@ module.exports = function (RED) {
         region,
         method
       }
-      // aws4.sign() will sign and modify these options, ready to pass to http.request
+      // aws4.sign() will sign and modify these options, ready to pass to axios request
       let config = aws4.sign(opts, keys);
       config.url = url;
 

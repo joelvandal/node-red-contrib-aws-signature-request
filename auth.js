@@ -4,8 +4,8 @@ module.exports = function (RED) {
     var node = this;
 
     node.on("input", function (msg) {
-      if (!node.credentials || !node.credentials.accessToken) {
-        node.status({ fill: "red", shape: "dot", text: "error.no-access-token" });
+      if (!node.credentials || !node.credentials.accessToken || !node.credentials.secretToken) {
+        node.status({ fill: "red", shape: "dot", text: "error.no-key" });
         return;
       }
     });

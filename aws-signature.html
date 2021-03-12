@@ -29,19 +29,43 @@
 </script>
 
 <script type="text/x-red" data-help-name="aws-signature">
-    <p>Get pocket list.</p>
+    <p>AWS signature request.</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>search
+        <dt>method
             <span class="property-type">string</span>
         </dt>
-        <dd>Search keys</dd>
+        <dd>GET | POST</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>region
+            <span class="property-type">string</span>
+        </dt>
+        <dd>AWS region</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>service
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Service name</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>host
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Host of API</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>path
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Path of API</dd>
     </dl>
 
     <h3>Outputs</h3>
     <dl class="message-properties">
         <dt>payload
-            <span class="property-type">object</span>
+            <span class="property-type">array</span>
         </dt>
         <dd>Default response from API</dd>
     </dl>
