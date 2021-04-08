@@ -1,7 +1,8 @@
 module.exports = function (RED) {
   "use strict";
-  const axios = require('axios');
-  const aws4 = require('aws4');
+  var axios = require('axios');
+  var aws4 = require('aws4');
+  var mustache = require("mustache");
 
   function AwsSignature(n) {
     RED.nodes.createNode(this, n);
@@ -18,10 +19,21 @@ module.exports = function (RED) {
     node.on("input", async function (msg) {
       let region = msg.region || n.region,
         service = msg.service || n.service,
-        host = msg.host || n.host,
-        path = msg.path || n.path,
+        host = msg.host || n.host || "",
+        path = msg.path || n.path || "",
         method = msg.method || n.method || "GET";
-        
+
+      //detect mustache then convert
+      let isTemplatedHost = (host).indexOf("{{") !== -1;
+      let isTemplatedPath = (path).indexOf("{{") !== -1;
+
+      if (isTemplatedHost) {
+        host = mustache.render(host, msg);
+      }
+      if (isTemplatedPath) {
+        path = mustache.render(path, msg);
+      }
+
       node.status({ fill: "blue", shape: "ring", text: "Sending" });
 
       let url = host + path;
