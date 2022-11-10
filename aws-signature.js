@@ -21,6 +21,7 @@ module.exports = function (RED) {
         service = msg.service || n.service,
         host = msg.host || n.host || "",
         path = msg.path || n.path || "",
+        headers = msg.headers || n.headers || "",
         method = msg.method || n.method || "GET";
 
       //detect mustache then convert
@@ -51,7 +52,9 @@ module.exports = function (RED) {
       // aws4.sign() will sign and modify these options, ready to pass to axios request
       let config = aws4.sign(opts, keys);
       config.url = url;
-
+      if (headers) {
+          config.headers = Object.assign({}, config.headers, headers);
+      }
       axios(config)
         .then(function (response) {
           msg.payload = response.data;
