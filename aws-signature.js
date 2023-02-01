@@ -71,7 +71,8 @@ module.exports = function (RED) {
         path,
         service,
         region,
-        method
+        method,
+        headers
       };
 
       if (method == 'POST' || method == 'PUT' ){
@@ -81,9 +82,9 @@ module.exports = function (RED) {
       // aws4.sign() will sign and modify these options, ready to pass to axios request
       let config = aws4.sign(opts, keys);
       //config.url = url;
-      if (headers) {
-        config.headers = Object.assign({}, config.headers, headers);
-      }
+      // if (headers) {
+      //   config.headers = Object.assign({}, config.headers, headers);
+      // }
 
       const request = https.request(config, function(res) {
 
@@ -95,7 +96,6 @@ module.exports = function (RED) {
         res.on('end', () => {
 
           try {
-            res.st
             if (data) {
               msg.payload = JSON.parse(data);
             }
@@ -118,5 +118,3 @@ module.exports = function (RED) {
   }
   RED.nodes.registerType("aws-signature", AwsSignature);
 };
-
-
