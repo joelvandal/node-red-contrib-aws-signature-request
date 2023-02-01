@@ -17,12 +17,20 @@
 <script type="text/x-red" data-template-name="aws-signature-auth">
     <div id="node-config-pocket-keys">
         <div class="form-row">
+            <label for="node-config-input-displayName"><i class="fa fa-user"></i> DisplayName</label>
+            <input type="text" id="node-config-input-displayName" placeholder="DisplayName">
+        </div>
+        <div class="form-row">
             <label for="node-config-input-accessKey"><i class="fa fa-user"></i> Access key</label>
             <input type="text" id="node-config-input-accessKey" placeholder="Your access key">
         </div>
         <div class="form-row">
             <label for="node-config-input-secretKey"><i class="fa fa-user"></i> Secret key</label>
             <input type="text" id="node-config-input-secretKey" placeholder="Your secret key">
+        </div>
+        <div class="form-row">
+            <label for="node-config-input-sessionToken"><i class="fa fa-user"></i> Session Token</label>
+            <input type="text" id="node-config-input-sessionToken" placeholder="Your session token">
         </div>
     </div>
     <div id="pocket-display" style="display: none;">
@@ -41,10 +49,11 @@
         },
         credentials: {
             accessKey: { type: "text" },
-            secretKey: { type: "password" }
+            secretKey: { type: "password" },
+            sessionToken: { type: "text" }
         },
         label: function () {
-            return this.displayName || this._("aws-signature-auth");
+            return this.displayName || this.accessKey;
         },
         exportable: false,
         oneditprepare: function () {
