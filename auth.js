@@ -16,6 +16,7 @@ module.exports = function (RED) {
       displayName: { type: "text" },
       accessKey: { type: "text", required: true },
       secretKey: { type: "password", required: true },
+      sessionToken: { type: "text", required: false },
     },
   });
 };
