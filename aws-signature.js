@@ -75,7 +75,7 @@ module.exports = function (RED) {
         headers
       };
 
-      if (method == 'POST' || method == 'PUT' ){
+      if (method != 'GET' && method != 'DELETE') {
         opts.body = JSON.stringify(msg.payload);
       }
 
